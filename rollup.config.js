@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -32,7 +33,8 @@ export default {
 		// https://github.com/rollup/rollup-plugin-commonjs
 		resolve({
 			browser: true,
-			dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/')
+			dedupe: importee =>
+				importee === 'svelte' || importee.startsWith('svelte/')
 		}),
 		commonjs(),
 
@@ -46,7 +48,8 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		css({ output: 'public/build/base.css' })
 	],
 	watch: {
 		clearScreen: false
@@ -61,10 +64,14 @@ function serve() {
 			if (!started) {
 				started = true;
 
-				require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-					stdio: ['ignore', 'inherit', 'inherit'],
-					shell: true
-				});
+				require('child_process').spawn(
+					'npm',
+					['run', 'start', '--', '--dev'],
+					{
+						stdio: ['ignore', 'inherit', 'inherit'],
+						shell: true
+					}
+				);
 			}
 		}
 	};

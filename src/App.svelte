@@ -1,30 +1,34 @@
 <script>
-	export let name;
+  import Nav from "./components/Nav.svelte";
+  import MarkdownEditor from "./components/MarkdownEditor.svelte";
+  import Output from "./components/Output.svelte";
+  import marked from "marked";
+
+  let source = `
+  # Markdownise v0.1 🚀
+  ## [GGKpanadze](https://github.com/ggKapanadze)
+  ---
+  `;
+  $: output = marked(source);
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  main {
+    background-color: #000 !important;
+    color: #0000 !important;
+  }
+  .editor {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
 </style>
+
+<main class="grey lighten-1">
+  <Nav />
+  <div class="row editor">
+    <MarkdownEditor bind:source />
+    <Output {output} />
+  </div>
+</main>
