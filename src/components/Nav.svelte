@@ -1,6 +1,9 @@
-<nav>
-  <div class="nav-wrapper teal lighten-2">
-    <span class="brand-logo center">Markdownise</span>
-    <ul id="nav-mobile" class="left hide-on-med-and-down" />
+<section class="hero is-link is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Markdownise
+      </h1>
+    </div>
   </div>
-</nav>
+</section>

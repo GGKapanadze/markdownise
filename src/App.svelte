@@ -1,33 +1,43 @@
 <script>
+  import "bulma/css/bulma.css";
+  import "@fortawesome/fontawesome-free/css/all.css";
   import Nav from "./components/Nav.svelte";
   import MarkdownEditor from "./components/MarkdownEditor.svelte";
   import Output from "./components/Output.svelte";
+  import DOMPurify from "dompurify";
   import marked from "marked";
+  import hljs from "highlight.js";
 
   let source = `
-  # Markdownise v0.1 🚀
+  # Markdownise v1.0 🖋
   ## [GGKpanadze](https://github.com/ggKapanadze)
   ---
   `;
-  $: output = marked(source);
+  marked.setOptions({
+    renderer: new marked.Renderer(),
+    highlight: function(code, language) {
+      const validLanguage = hljs.getLanguage(language) ? language : "plaintext";
+      return hljs.highlight(validLanguage, code).value;
+    },
+    pedantic: false,
+    gfm: true,
+    breaks: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false,
+    xhtml: false
+  });
+
+  $: output = DOMPurify.sanitize(marked(source));
 </script>
 
 <style>
-  main {
-    background-color: #000 !important;
-    color: #0000 !important;
-  }
-  .editor {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
-  }
+
 </style>
 
-<main class="grey lighten-1">
+<main>
   <Nav />
-  <div class="row editor">
+  <div class="columns is-gapless">
     <MarkdownEditor bind:source />
     <Output {output} />
   </div>
