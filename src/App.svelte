@@ -1,34 +1,20 @@
 <script>
   import Nav from "./components/Nav.svelte";
-  import MarkdownEditor from "./components/MarkdownEditor.svelte";
+  import Editor from "./components/Editor.svelte";
   import Output from "./components/Output.svelte";
-  import marked from "marked";
+  import { compile } from "./services/compiler";
+  import { source } from "./store/source";
+  import jsPDF from "jspdf";
 
-  let source = `
-  # Markdownise v0.1 🚀
-  ## [GGKpanadze](https://github.com/ggKapanadze)
-  ---
-  `;
-  $: output = marked(source);
+  let output;
+  $: output = compile($source);
+
 </script>
 
-<style>
-  main {
-    background-color: #000 !important;
-    color: #0000 !important;
-  }
-  .editor {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
-  }
-</style>
-
-<main class="grey lighten-1">
+<main>
   <Nav />
-  <div class="row editor">
-    <MarkdownEditor bind:source />
+  <div class="columns is-gapless">
+    <Editor />
     <Output {output} />
   </div>
 </main>

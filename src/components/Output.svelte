@@ -1,26 +1,25 @@
 <script>
-  import marked from "marked";
   export let output;
 </script>
 
 <style>
-  .ressult {
-    width: 50%;
-    border: solid 1px black;
-    height: 85vh;
-    background: #ffffff;
-    overflow: auto;
+  .output {
+    border-left: 6px solid black;
+    padding-left: 100px !important;
+    min-height: 94vh;
   }
 
-  .output {
-    width: 100%;
-    padding: 0 2em;
-    color: black;
+  :global(table) {
+    border: solid 1px #440000;
+    width: 95%;
   }
+
 </style>
 
-<div class="ressult col s6">
-  <div class="output">
+<div
+  class="content output column is-6"
+  style="padding-left:10px !important; padding-top:12px !important">
+  <div id="html2canvas">
     {@html output}
   </div>
 </div>
