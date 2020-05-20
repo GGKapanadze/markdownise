@@ -4,14 +4,22 @@
 
 <style>
   .output {
-    border-left: 5px solid black;
+    border-left: 6px solid black;
     padding-left: 100px !important;
-    min-height: 91vh;
+    min-height: 94vh;
   }
+
+  :global(table) {
+    border: solid 1px #440000;
+    width: 95%;
+  }
+
 </style>
 
 <div
-  class="content has-background-grey-lighter output column is-6"
+  class="content output column is-6"
   style="padding-left:10px !important; padding-top:12px !important">
-  {@html output}
+  <div id="html2canvas">
+    {@html output}
+  </div>
 </div>
