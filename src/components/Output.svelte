@@ -8,12 +8,6 @@
     padding-left: 100px !important;
     min-height: 94vh;
   }
-
-  :global(table) {
-    border: solid 1px #440000;
-    width: 95%;
-  }
-
 </style>
 
 <div
