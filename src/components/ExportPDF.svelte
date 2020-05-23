@@ -8,23 +8,23 @@
   function generate() {
     clicked = !clicked;
 
-    setTimeout(() => {
-      html2pdf()
-        .from(document.getElementById("html2canvas"))
-        .set({
-          pagebreak: { mode: ["avoid-all", "css", "legacy"] },
-          margin: 1,
-          filename: "myfile.pdf",
-          image: { type: "png", quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-          dpi: 300,
-          letterRendering: true,
-          useCORS: true
-        })
-        .save("markdownise_pdf");
-      clicked = !clicked;
-    }, 1000);
+    html2pdf()
+      .from(document.getElementById("html2canvas"))
+      .set({
+        pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+        margin: 0.3,
+        filename: "myfile.pdf",
+        image: { type: "png", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+        dpi: 300,
+        letterRendering: true,
+        useCORS: true
+      })
+      .save("markdownise_pdf")
+      .then(() => {
+        clicked = !clicked;
+      });
   }
 </script>
 
