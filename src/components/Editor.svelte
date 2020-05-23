@@ -35,7 +35,7 @@
         localStorage.setItem("source", $source);
       });
       loading = false;
-    }, 1000);
+    }, 500);
   });
 </script>
 
@@ -45,13 +45,16 @@
     margin-right: auto;
     margin-top: 150px;
     width: 75%;
+  }
 
+  .material-background{
+    background-color: #24343c;
   }
 </style>
 
-<div class="column is-6" class:has-background-grey-light={loading}>
+<div class="column is-6" class:material-background={loading}>
   {#if loading}
-    <progress class="progress is-large is-info" max="100">60%</progress>
+    <progress class="progress is-large is-warning" max="100">30%</progress>
   {/if}
 
   <textarea
