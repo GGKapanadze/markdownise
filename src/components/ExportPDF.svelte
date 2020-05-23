@@ -1,18 +1,36 @@
+<script context="module">
+  let _h2pPromise, _h2p;
+
+  _h2pPromise = import("html2pdf.js");
+  _h2pPromise.then(md => {
+    _h2p = md;
+  });
+</script>
+
 <script>
   import { compile } from "../services/compiler";
   import { source } from "../store/source";
-  import jsPDF from "jspdf";
-  import html2pdf from "html2pdf.js";
-  let clicked = false;
+  import { onMount } from "svelte";
 
-  function generate() {
+  let clicked = false,
+    h2p;
+
+  onMount(async () => {
+    if (!_h2p) {
+      h2p = await import("html2pdf.js");
+    } else {
+      h2p = _h2p;
+    }
+  });
+
+  async function generate() {
     clicked = !clicked;
-
-    html2pdf()
+    h2p
+      .default()
       .from(document.getElementById("html2canvas"))
       .set({
         pagebreak: { mode: ["avoid-all", "css", "legacy"] },
-        margin: 0.3,
+        margin: 0.2,
         filename: "myfile.pdf",
         image: { type: "png", quality: 0.98 },
         html2canvas: { scale: 2 },
