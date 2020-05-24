@@ -1,6 +1,8 @@
 import CodeMirror from "codemirror";
 
 import "./codemirror.css";
+import "highlight.js/styles/a11y-light.css";
+import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript.js";
 import "codemirror/mode/php/php.js";
 import "codemirror/mode/ruby/ruby.js";
