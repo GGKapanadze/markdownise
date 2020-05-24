@@ -35,7 +35,7 @@
         localStorage.setItem("source", $source);
       });
       loading = false;
-    }, 500);
+    }, 300);
   });
 </script>
 
