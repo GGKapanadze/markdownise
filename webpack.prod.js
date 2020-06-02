@@ -28,6 +28,7 @@ module.exports = merge(mainConfig, {
       paths: glob.sync(`${path.join(__dirname, "public")}/**/*`, {
         nodir: true,
       }),
+      whitelistPatterns: [/^hljs/, /^CodeMirror/, /^cm-s-material/],
     }),
   ],
 });
