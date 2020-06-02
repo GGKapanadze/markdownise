@@ -25,7 +25,7 @@ module.exports = merge(mainConfig, {
       filename: "[name].css",
     }),
     new PurgecssPlugin({
-      paths: glob.sync(`${path.join(__dirname, "public")}/**`, {
+      paths: glob.sync(`${path.join(__dirname, "public","build")}/*`, {
         nodir: true,
       }),
       whitelistPatterns: [/^hljs/, /^CodeMirror/, /^cm-s-material/],
