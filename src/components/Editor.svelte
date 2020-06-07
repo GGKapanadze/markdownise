@@ -28,14 +28,12 @@
       codeMirror = _codeMirror;
       config = _config;
     }
-    setTimeout(() => {
-      editor = codeMirror.fromTextArea(refs.editor, config);
-      editor.on("change", instance => {
-        $source = instance.getValue();
-        localStorage.setItem("source", $source);
-      });
-      loading = false;
-    }, 300);
+    editor = codeMirror.fromTextArea(refs.editor, config);
+    editor.on("change", instance => {
+      $source = instance.getValue();
+      localStorage.setItem("source", $source);
+    });
+    loading = false;
   });
 </script>
 
@@ -47,7 +45,7 @@
     width: 75%;
   }
 
-  .material-background{
+  .material-background {
     background-color: #24343c;
   }
 </style>
