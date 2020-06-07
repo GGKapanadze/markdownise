@@ -4,7 +4,6 @@
   import Output from "./components/Output.svelte";
   import { compile } from "./services/compiler";
   import { source } from "./store/source";
-  import jsPDF from "jspdf";
 
   let output;
   $: output = compile($source);
