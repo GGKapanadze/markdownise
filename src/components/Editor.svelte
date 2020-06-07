@@ -56,6 +56,7 @@
   {/if}
 
   <textarea
+    aria-label="editor"
     bind:value={$source}
     bind:this={refs.editor}
     class:is-hidden={loading} />
