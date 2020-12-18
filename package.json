@@ -22,7 +22,7 @@
   "dependencies": {
     "bulma": "^0.8.2",
     "codemirror": "^5.54.0",
-    "dompurify": "^2.0.11",
+    "dompurify": "^2.0.17",
     "highlight.js": "^10.0.3",
     "html2canvas": "^1.0.0-rc.5",
     "html2pdf.js": "^0.9.2",
